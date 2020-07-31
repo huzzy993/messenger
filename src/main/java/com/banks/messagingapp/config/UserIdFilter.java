@@ -3,13 +3,12 @@ package com.banks.messagingapp.config;
 import com.banks.messagingapp.controller.GlobalControllerAdvice;
 import com.banks.messagingapp.dto.ErrorDto;
 import com.banks.messagingapp.entity.AppUser;
-import com.banks.messagingapp.exception.AppException.UserNotFoundException;
+import com.banks.messagingapp.exception.UserNotFoundException;
 import com.banks.messagingapp.model.CurrentUserDetails;
 import com.banks.messagingapp.service.AppUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -23,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.banks.messagingapp.util.Constants.USER_ID_HEADER;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Component
 @AllArgsConstructor
@@ -48,8 +48,8 @@ public class UserIdFilter extends OncePerRequestFilter {
 			filterChain.doFilter(request, response);
 		} else {
 			ResponseEntity<ErrorDto> errorDtoResponseEntity =
-							globalControllerAdvice.exceptionHandler(new UserNotFoundException("user not found"));
-			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+							globalControllerAdvice.exceptionHandler(new UserNotFoundException("UserId " + userId + " found in header does not exist"));
+			response.setContentType(APPLICATION_JSON_VALUE);
 			response.setStatus(errorDtoResponseEntity.getStatusCode().value());
 			try (PrintWriter writer = response.getWriter()) {
 				writer.write(objectMapper.writeValueAsString(errorDtoResponseEntity.getBody()));

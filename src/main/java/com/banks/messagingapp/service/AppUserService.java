@@ -2,7 +2,7 @@ package com.banks.messagingapp.service;
 
 import com.banks.messagingapp.dto.CreateUserRequestDto;
 import com.banks.messagingapp.entity.AppUser;
-import com.banks.messagingapp.exception.AppException;
+import com.banks.messagingapp.exception.DuplicateNicknameException;
 import com.banks.messagingapp.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class AppUserService {
 	public Long createUser(CreateUserRequestDto createUserRequestDto) {
 		String nickname = createUserRequestDto.getNickname();
 		if (appUserRepository.findByNickname(nickname).isPresent()) {
-			throw new AppException.DuplicateNicknameException("User with nickname " + nickname + " already exists");
+			throw new DuplicateNicknameException("User with nickname " + nickname + " already exists");
 		}
 
 		AppUser appUser = new AppUser();

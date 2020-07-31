@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import javax.validation.Valid;
 
 import static com.banks.messagingapp.controller.MessageController.MESSAGES_BASE_PATH;
 import static com.banks.messagingapp.util.Constants.USER_ID_HEADER;
@@ -37,7 +38,7 @@ public class MessageController {
 	@PostMapping
 	@ApiImplicitParam(name = USER_ID_HEADER, value = "Current User Id", required = true, paramType = "header",
 					dataTypeClass = Long.class, example = "1234")
-	public SendMessageResponseDto sendMessage(@RequestBody SendMessageRequestDto messageRequestDto) throws JsonProcessingException {
+	public SendMessageResponseDto sendMessage(@RequestBody @Valid SendMessageRequestDto messageRequestDto) throws JsonProcessingException {
 		Long messageId = messageService.sendMessage(currentUserDetails.getAppUser(), messageRequestDto);
 		return SendMessageResponseDto.builder().messageId(messageId).build();
 	}
@@ -46,7 +47,7 @@ public class MessageController {
 	@ApiImplicitParam(name = USER_ID_HEADER, value = "Current User Id", required = true, paramType = "header",
 					dataTypeClass = Long.class, example = "1234")
 	public List<InboxDto> loadInbox() {
-		log.info("Load inbox for {}", currentUserDetails.getAppUser().getId());
+		log.info("Load inbox for userId {}", currentUserDetails.getAppUser().getId());
 
 		return messageService.getInbox(currentUserDetails.getAppUser());
 	}
@@ -55,7 +56,7 @@ public class MessageController {
 	@ApiImplicitParam(name = USER_ID_HEADER, value = "Current User Id", required = true, paramType = "header",
 					dataTypeClass = Long.class, example = "1234")
 	public List<InboxDto> filterInbox(@RequestParam("senderId") Long senderId) {
-		log.info("Filter inbox by sender {} for {}", senderId, currentUserDetails.getAppUser().getId());
+		log.info("Filter inbox by senderId {} for userId {}", senderId, currentUserDetails.getAppUser().getId());
 
 		return messageService.filterInboxBySender(currentUserDetails.getAppUser(), senderId);
 	}
@@ -64,7 +65,7 @@ public class MessageController {
 	@ApiImplicitParam(name = USER_ID_HEADER, value = "Current User Id", required = true, paramType = "header",
 					dataTypeClass = Long.class, example = "1234")
 	public List<OutboxDto> loadOutbox() {
-		log.info("Load outbox for {}", currentUserDetails.getAppUser().getId());
+		log.info("Load outbox for userId {}", currentUserDetails.getAppUser().getId());
 
 		return messageService.getOutbox(currentUserDetails.getAppUser());
 	}
