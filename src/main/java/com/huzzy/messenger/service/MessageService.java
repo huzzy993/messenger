@@ -1,5 +1,6 @@
 package com.huzzy.messenger.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.huzzy.messenger.dto.InboxDto;
 import com.huzzy.messenger.dto.OutboxDto;
 import com.huzzy.messenger.dto.QueueMessageDto;
@@ -9,7 +10,6 @@ import com.huzzy.messenger.entity.Message;
 import com.huzzy.messenger.exception.SameSenderAndRecipientException;
 import com.huzzy.messenger.exception.UserNotFoundException;
 import com.huzzy.messenger.repository.MessageRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

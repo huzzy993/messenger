@@ -1,7 +1,7 @@
 package com.huzzy.messenger.service;
 
-import com.huzzy.messenger.dto.QueueMessageDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.huzzy.messenger.dto.QueueMessageDto;
 
 public interface IMessageSender {
 

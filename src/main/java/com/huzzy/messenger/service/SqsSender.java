@@ -1,9 +1,9 @@
 package com.huzzy.messenger.service;
 
 import com.amazonaws.services.sqs.AmazonSQS;
-import com.huzzy.messenger.dto.QueueMessageDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huzzy.messenger.dto.QueueMessageDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;

@@ -1,5 +1,6 @@
 package com.huzzy.messenger.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huzzy.messenger.controller.GlobalControllerAdvice;
 import com.huzzy.messenger.dto.ErrorDto;
 import com.huzzy.messenger.entity.AppUser;
@@ -7,7 +8,6 @@ import com.huzzy.messenger.exception.UserNotFoundException;
 import com.huzzy.messenger.model.CurrentUserDetails;
 import com.huzzy.messenger.service.AppUserService;
 import com.huzzy.messenger.util.Constants;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

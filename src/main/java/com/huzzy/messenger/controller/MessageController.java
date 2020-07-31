@@ -1,5 +1,6 @@
 package com.huzzy.messenger.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.huzzy.messenger.dto.InboxDto;
 import com.huzzy.messenger.dto.OutboxDto;
 import com.huzzy.messenger.dto.SendMessageRequestDto;
@@ -7,7 +8,6 @@ import com.huzzy.messenger.dto.SendMessageResponseDto;
 import com.huzzy.messenger.model.CurrentUserDetails;
 import com.huzzy.messenger.service.MessageService;
 import com.huzzy.messenger.util.Constants;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.ApiImplicitParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
