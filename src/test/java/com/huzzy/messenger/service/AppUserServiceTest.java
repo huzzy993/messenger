@@ -1,9 +1,8 @@
-package com.banks.messagingapp.service;
+package com.huzzy.messenger.service;
 
 import com.huzzy.messenger.dto.CreateUserRequestDto;
 import com.huzzy.messenger.entity.AppUser;
 import com.huzzy.messenger.repository.AppUserRepository;
-import com.huzzy.messenger.service.AppUserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

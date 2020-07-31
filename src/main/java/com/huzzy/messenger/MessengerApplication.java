@@ -8,10 +8,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableJpaAuditing
 @EnableSwagger2
-public class MessagingAppApplication {
+public class MessengerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MessagingAppApplication.class, args);
+		SpringApplication.run(MessengerApplication.class, args);
 	}
 
 }

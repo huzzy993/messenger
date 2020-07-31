@@ -1,4 +1,4 @@
-package com.banks.messagingapp;
+package com.huzzy.messenger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.extension.ExtendWith;

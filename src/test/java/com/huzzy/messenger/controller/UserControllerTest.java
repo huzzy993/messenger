@@ -1,6 +1,6 @@
-package com.banks.messagingapp.controller;
+package com.huzzy.messenger.controller;
 
-import com.banks.messagingapp.IntegrationTest;
+import com.huzzy.messenger.IntegrationTest;
 import com.huzzy.messenger.dto.CreateUserRequestDto;
 import com.huzzy.messenger.dto.CreateUserResponseDto;
 import com.huzzy.messenger.repository.AppUserRepository;
