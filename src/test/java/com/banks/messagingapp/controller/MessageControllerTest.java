@@ -70,22 +70,24 @@ public class MessageControllerTest extends IntegrationTest {
 		Long userId1 = appUserService.createUser(CreateUserRequestDto.builder().nickname("nick-2").build());
 		Long userId2 = userId1 + 1;
 
+		SendMessageRequestDto requestDto = SendMessageRequestDto.builder().message("test").recipientId(userId1).build();
 		ResultActions mvcResult = mockMvc.perform(post("/messages")
 						.contentType(APPLICATION_JSON)
 						.header(USER_ID_HEADER, userId2)
-						.content(objectMapper.writeValueAsString(SendMessageRequestDto.builder().message("test").recipientId(userId1).build())));
+						.content(objectMapper.writeValueAsString(requestDto)));
 
-		mvcResult.andExpect(status().isNotFound());
+		mvcResult.andExpect(status().isForbidden());
 	}
 
 	@Test
 	public void shouldFailToSendMessageToSelf() throws Exception {
 		Long userId2 = appUserService.createUser(CreateUserRequestDto.builder().nickname("nick-2").build());
 
+		SendMessageRequestDto requestDto = SendMessageRequestDto.builder().message("test").recipientId(userId2).build();
 		MvcResult mvcResult = mockMvc.perform(post("/messages")
 						.contentType(APPLICATION_JSON)
 						.header(USER_ID_HEADER, userId2)
-						.content(objectMapper.writeValueAsString(SendMessageRequestDto.builder().message("test").recipientId(userId2).build())))
+						.content(objectMapper.writeValueAsString(requestDto)))
 						.andReturn();
 
 		assertThat(mvcResult.getResponse().getStatus()).isEqualTo(400);

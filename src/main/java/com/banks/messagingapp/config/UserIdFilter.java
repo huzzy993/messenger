@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.banks.messagingapp.util.Constants.USER_ID_HEADER;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Component
@@ -47,10 +48,11 @@ public class UserIdFilter extends OncePerRequestFilter {
 			currentUserDetails.setAppUser(user.get());
 			filterChain.doFilter(request, response);
 		} else {
+			String message = "UserId " + userId + " found in header does not exist";
 			ResponseEntity<ErrorDto> errorDtoResponseEntity =
-							globalControllerAdvice.exceptionHandler(new UserNotFoundException("UserId " + userId + " found in header does not exist"));
+							globalControllerAdvice.exceptionHandler(new UserNotFoundException(message));
 			response.setContentType(APPLICATION_JSON_VALUE);
-			response.setStatus(errorDtoResponseEntity.getStatusCode().value());
+			response.setStatus(FORBIDDEN.value());
 			try (PrintWriter writer = response.getWriter()) {
 				writer.write(objectMapper.writeValueAsString(errorDtoResponseEntity.getBody()));
 				writer.flush();
