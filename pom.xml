@@ -8,11 +8,11 @@
         <version>2.3.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.banks</groupId>
-    <artifactId>messaging-app</artifactId>
+    <groupId>com.huzzy</groupId>
+    <artifactId>messenger</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>messaging-app</name>
-    <description>Messaging App</description>
+    <name>messenger</name>
+    <description>Simple Messenger App</description>
 
     <properties>
         <java.version>1.8</java.version>

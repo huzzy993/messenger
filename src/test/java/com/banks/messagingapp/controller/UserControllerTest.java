@@ -1,10 +1,10 @@
 package com.banks.messagingapp.controller;
 
 import com.banks.messagingapp.IntegrationTest;
-import com.banks.messagingapp.dto.CreateUserRequestDto;
-import com.banks.messagingapp.dto.CreateUserResponseDto;
-import com.banks.messagingapp.repository.AppUserRepository;
-import com.banks.messagingapp.service.AppUserService;
+import com.huzzy.messenger.dto.CreateUserRequestDto;
+import com.huzzy.messenger.dto.CreateUserResponseDto;
+import com.huzzy.messenger.repository.AppUserRepository;
+import com.huzzy.messenger.service.AppUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

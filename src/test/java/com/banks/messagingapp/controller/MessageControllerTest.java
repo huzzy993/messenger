@@ -1,22 +1,22 @@
 package com.banks.messagingapp.controller;
 
 import com.banks.messagingapp.IntegrationTest;
-import com.banks.messagingapp.dto.CreateUserRequestDto;
-import com.banks.messagingapp.dto.InboxDto;
-import com.banks.messagingapp.dto.OutboxDto;
-import com.banks.messagingapp.dto.SendMessageRequestDto;
-import com.banks.messagingapp.dto.SendMessageResponseDto;
-import com.banks.messagingapp.repository.AppUserRepository;
-import com.banks.messagingapp.repository.MessageRepository;
-import com.banks.messagingapp.service.AppUserService;
-import com.banks.messagingapp.service.MessageService;
+import com.huzzy.messenger.dto.CreateUserRequestDto;
+import com.huzzy.messenger.dto.InboxDto;
+import com.huzzy.messenger.dto.OutboxDto;
+import com.huzzy.messenger.dto.SendMessageRequestDto;
+import com.huzzy.messenger.dto.SendMessageResponseDto;
+import com.huzzy.messenger.repository.AppUserRepository;
+import com.huzzy.messenger.repository.MessageRepository;
+import com.huzzy.messenger.service.AppUserService;
+import com.huzzy.messenger.service.MessageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.banks.messagingapp.util.Constants.USER_ID_HEADER;
+import static com.huzzy.messenger.util.Constants.USER_ID_HEADER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
